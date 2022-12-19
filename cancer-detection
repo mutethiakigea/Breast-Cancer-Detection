@@ -1,0 +1,19 @@
+import numpy as np
+from sklearn.datasets import load_breast_cancer
+from sklearn.ensemble import RandomForestClassifier
+
+# Load the breast cancer dataset
+data = load_breast_cancer()
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.33, random_state=42)
+
+# Train a Random Forest classifier on the training data
+clf = RandomForestClassifier()
+clf.fit(X_train, y_train)
+
+# Use the trained classifier to make predictions on the test data
+predictions = clf.predict(X_test)
+
+# Evaluate the model's performance
+print("Accuracy:", accuracy_score(y_test, predictions))
